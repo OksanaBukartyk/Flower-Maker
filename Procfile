@@ -1,1 +1,1 @@
-web: gunicorn locallibrary.wsgi --log-file -
+web: gunicorn JBFlowersMakerNEW.wsgi --log-file -
