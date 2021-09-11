@@ -1,23 +1,24 @@
 {% extends 'app/main.html' %}
 {% block content %}
 
-    <img class="rounded-circle account-img" width="100" height="100" src="#">
+
 
 
     <h2 class="outline"><br>Це я @julialadybird
         Прикраси для дівчаток своїми руками🌷
         Різноманіття, акуратність виконання, якість матеріалів!
         Спробую втілити усі ваші бажання❤<br>️</h2>
-    <div class="post-wrapper">
+
+    <div class="product-wrapper">
         {% for product in products %}
             <div>
-                <div class="post ">
-                    <a href="#"> <img class="thumbnail" src="{{ product.thumbnail.url }}"></a>
-                    <div class="post-preview bg-transparent">
+                <div class="product">
+                    <a href="#"> <img class="product-thumbnail" src="{{ product.thumbnail.url }}"></a>
+                    <div class="product-preview bg-transparent">
 
-                        <a class="post-title" href="{% url 'product' product.id %}">{{ product.headline }}</a>
-                        <p class="post-intro">{{ product.description }}</p>
-                        <p class="post-body">{{ product.created }}</p>
+                        <a class="product-title" href="{% url 'product' product.id %}">{{ product.headline }}</a>
+                        <p class="product-intro">{{ product.description }}</p>
+                        <p class="product-body">{{ product.created }}</p>
                         <hr>
                     </div>
                 </div>
