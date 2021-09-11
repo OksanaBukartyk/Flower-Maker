@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-bey(yru@v@s^-04#r0fp(1_#1vz4s18l%!zk(0jo$5(m++dx*5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'https://flowers-maker.herokuapp.com/']
+ALLOWED_HOSTS = ['127.0.0.1', 'flowers-maker.herokuapp.com']
 
 # Application definition
 
