@@ -53,3 +53,17 @@ def edit_product(request, id):
     context = {'product_form': product_form}
     return render(request, 'app/product_create_form.html',context)
 
+def delete_product(request,id):
+    product=Product.objects.get(id=id)
+    if request.method == 'POST':
+        product.delete()
+        versions=Version.objects.filter(product_id=product)
+        versions.delete()
+        return redirect('index')
+    context = {'item':product}
+    return render(request, 'app/product_delete_form.html', context)
+
+
+
+
+
