@@ -42,6 +42,6 @@ def create_product(request):
     return render(request, "app/product_create_form.html", {'product_form': product_form,
                                                             'version_form': version_form,
                                                             })
-def edit_product(request):
-
-    return render(request)
+def edit_product(request, id):
+    product=Product.objects.get(id)
+    return render(request, 'app/index.html')
