@@ -24,21 +24,19 @@ def product(request, id):
 
 
 def create_product(request):
-    product_form = ProductCreateForm( request.POST,request.FILES)
+    product_form = ProductCreateForm( request.POST,request.FILES or None)
     version_form = ProductVersionCreateForm(request.POST,request.FILES)
-    messages.error(request, 'Не 1111')
     if product_form.is_valid() and version_form.is_valid():
         product = product_form.save()
         version = version_form.save(commit=False)
         version.product_id = product
         version.save()
-
-        messages.error(request, 'Не вірний 222')
+        messages.error(request, 'Вітаю, ви добавили новий товар')
         return redirect('index')
-    else:
-        product_form = ProductCreateForm()
-        version_form = ProductVersionCreateForm( )
-        messages.error(request, 'Не вірний 333')
+    #else:
+       # product_form = ProductCreateForm()
+       # version_form = ProductVersionCreateForm( )
+
     return render(request, "app/product_create_form.html", {'product_form': product_form,
                                                             'version_form': version_form,
                                                             })
@@ -64,6 +62,36 @@ def delete_product(request,id):
     return render(request, 'app/product_delete_form.html', context)
 
 
+def create_product_version(request,id):
+    version_form = ProductVersionCreateForm(request.POST,request.FILES)
+    product=Product.objects.get(id=id)
+    if version_form.is_valid():
+        version = version_form.save(commit=False)
+        version.product_id = product
+        version.save()
+        messages.error(request, 'Вітаю ви добавили новий варінт товару!')
+        return redirect('product', id=version.product_id.id)
+    #else:
+        #product_form = ProductCreateForm()
+        #version_form = ProductVersionCreateForm( )
 
+    return render(request, "app/product_create_form.html", {'version_form': version_form,
+                                                            })
+def edit_product_version(request,id):
+    version = Version.objects.get(id=id)
+    version_form = ProductVersionCreateForm(instance=version)
+    if request.method == 'POST':
+        form = ProductVersionCreateForm(request.POST, request.FILES, instance=version)
+        if form.is_valid():
+            form.save()
+        return redirect('product', id=version.product_id.id)
+    context = {'product_form': version_form}
+    return render(request, 'app/product_create_form.html', context)
 
-
+def delete_product_version(request,id):
+    version=Version.objects.get(id=id)
+    if request.method == 'POST':
+        version.delete()
+        return redirect('product', id=version.product_id.id)
+    context = {'item':version}
+    return render(request, 'app/product_delete_form.html', context)

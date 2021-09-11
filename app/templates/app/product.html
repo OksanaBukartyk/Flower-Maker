@@ -40,9 +40,11 @@
 
                     Prize: {{ version.prise }}
                     Count: {{ version.count }}
+                     <a class="btn btn-outline-success" href="{%  url 'edit_product_version' version.id %}">Ред</a>
+            <a class="btn btn-outline-danger" href="{% url 'delete_product_version' version.id %}">Вид</a>
                     <hr>
                 {% endfor %}
-              <a class="btn btn-outline-success" href="#">Добавити варіант</a>
+              <a class="btn btn-outline-success" href="{% url 'create_product_version' product.id %}">Добавити варіант</a>
             </div>
 
             </div>
