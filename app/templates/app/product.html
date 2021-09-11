@@ -1,0 +1,53 @@
+{% extends 'app/main.html' %}
+{% block content %}
+    <h1>Product </h1>
+    <div class="main-container">
+        <br>
+        <a class="btn btn-warning" href="{% url 'index' %}">&laquo Повернутись до всіх оголошень</a>
+
+        {% if request.user is admin %}
+            <a class="btn btn-outline-success" href="#">Редагувати</a>
+            <a class="btn btn-outline-danger" href="#">Видалити</a>
+        {% endif %}
+
+        <hr>
+        <div class="row">
+            <div class="col-md-8">
+
+                <div class="card card-body bg-transparent" id="product-info-box">
+                    <img id="product_pic" src="{{ product.thumbnail.url }}">
+                    <hr>
+                    <div class="text-container">
+                    <div class="card card-body bg-transparent">
+                        <h2 align="left">Назва: {{ product.headline }}</h2>
+
+                        <p align="left">Опис: {{ product.description }}</p>
+
+                        <p align="left">Категорія: {{ product.category }} </p>
+                        <p align="left">Стан: {{ product }}</p>
+
+
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+             <div class="text-container">
+            <h1>Versions</h1>
+                {% for version in versions %}
+
+                    Color: {{ version.color }}
+
+                    Prize: {{ version.prise }}
+                    Count: {{ version.count }}
+                    <hr>
+                {% endfor %}
+            </div>
+
+            </div>
+        </div>
+        <br>
+
+    </div>
+
+{% endblock content %}

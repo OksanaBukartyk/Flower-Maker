@@ -1,0 +1,22 @@
+{% extends 'app/main.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<section>
+    <a class="btn btn-warning" href="{% url 'index' %}">&laquo Назад до оголошень</a>
+<div class="container">
+<hr><hr>
+<form action="" method="post" enctype="multipart/form-data">
+  <table>
+    <tbody>
+    {% csrf_token %}
+      {{ product_form }}
+      {{ version_form }}
+    </tbody>
+  </table>
+  <p><input type="submit" value="Submit" /></p>
+</form>
+</div>
+</section>
+{% endblock content %}

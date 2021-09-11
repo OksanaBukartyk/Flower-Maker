@@ -26,7 +26,7 @@
 </head>
 
 <body>
-<div class="k">
+<div class="background_image">
 
     <div class="main-container">
         {% include 'app/navbar.html' %}
@@ -41,11 +41,11 @@
             {% endfor %}
         </ul>
     {% endif %}
-
+<div class="container">
     {% block content %}
         <!-- Content goes here -->
     {% endblock content %}
-
+</div>
     <footer>
         <p class="text-dark">&copy; Created by Oksana Bukartyk</p>
     </footer>

@@ -1,35 +1,31 @@
 {% extends 'app/main.html' %}
-{% load static %}
 {% block content %}
 
-<img class="rounded-circle account-img"  width="100" height="100" src="#">
+    <img class="rounded-circle account-img" width="100" height="100" src="#">
 
 
-<h2 class="outline"><br>Це я @julialadybird
-Прикраси для дівчаток своїми руками🌷
-Різноманіття, акуратність виконання, якість матеріалів!
-Спробую втілити усі ваші бажання❤<br>️</h2>
-   <div class="container">
-    {% for product in products%}
+    <h2 class="outline"><br>Це я @julialadybird
+        Прикраси для дівчаток своїми руками🌷
+        Різноманіття, акуратність виконання, якість матеріалів!
+        Спробую втілити усі ваші бажання❤<br>️</h2>
+    <div class="post-wrapper">
+        {% for product in products %}
+            <div>
+                <div class="post ">
+                    <a href="#"> <img class="thumbnail" src="{{ product.thumbnail.url }}"></a>
+                    <div class="post-preview bg-transparent">
 
-        <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{ product.thumbnail }}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title : {{ product.headline }}</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-    {% endfor %}
+                        <a class="post-title" href="{% url 'product' product.id %}">{{ product.headline }}</a>
+                        <p class="post-intro">{{ product.description }}</p>
+                        <p class="post-body">{{ product.created }}</p>
+                        <hr>
+                    </div>
+                </div>
 
-   </div>
 
+            </div>
+        {% endfor %}
+
+
+    </div>
 {% endblock content %}
