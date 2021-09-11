@@ -5,10 +5,10 @@
         <br>
         <a class="btn btn-warning" href="{% url 'index' %}">&laquo Повернутись до всіх оголошень</a>
 
-        {% if request.user is admin %}
-            <a class="btn btn-outline-success" href="#">Редагувати</a>
+
+            <a class="btn btn-outline-success" href="{% url 'edit_product' product.id %}">Редагувати</a>
             <a class="btn btn-outline-danger" href="#">Видалити</a>
-        {% endif %}
+
 
         <hr>
         <div class="row">
@@ -42,6 +42,7 @@
                     Count: {{ version.count }}
                     <hr>
                 {% endfor %}
+              <a class="btn btn-outline-success" href="#">Добавити варіант</a>
             </div>
 
             </div>

@@ -28,3 +28,5 @@ class ProductVersionCreateForm(ModelForm):
         widgets = {
             'color': Textarea(attrs={'cols': 80, 'rows': 20}),
         }
+
+

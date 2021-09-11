@@ -43,5 +43,13 @@ def create_product(request):
                                                             'version_form': version_form,
                                                             })
 def edit_product(request, id):
-    product=Product.objects.get(id)
-    return render(request, 'app/index.html')
+    product = Product.objects.get(id=id)
+    product_form=ProductCreateForm(instance=product)
+    if request.method == 'POST':
+        form=ProductCreateForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+        return redirect('index')
+    context = {'product_form': product_form}
+    return render(request, 'app/product_create_form.html',context)
+
